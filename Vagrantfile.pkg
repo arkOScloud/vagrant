@@ -1,0 +1,41 @@
+VAGRANTFILE_API_VERSION = "2"
+
+$script = <<SCRIPT
+# Bring arkOS to latest version
+if [[ -d /home/vagrant/core ]]
+then
+	cd /home/vagrant/core
+	git checkout master
+	git pull
+	git fetch --tags
+fi
+if [[ -d /home/vagrant/kraken ]]
+then
+	cd /home/vagrant/kraken
+	git checkout master
+	git pull
+	git fetch --tags
+fi
+if [[ -d /home/vagrant/genesis ]]
+then
+	cd /home/vagrant/genesis
+	git checkout 0.7
+	git pull
+	git fetch --tags
+	npm install
+	bower install
+	ember build
+fi
+if [[ -d /var/lib/arkos/applications ]]
+then
+	cd /var/lib/arkos/applications
+	git checkout master
+	git pull
+	git fetch --tags
+fi
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.network :forwarded_port, host: 8000, guest: 8000
+  config.vm.provision "shell", inline: $script
+end
