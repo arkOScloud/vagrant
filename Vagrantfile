@@ -116,6 +116,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   chef.validation_client_name = "ORGNAME-validator"
 
-  config.vm.synced_folder "/Users/Jacob/Projects/arkOS/vagrant", "/vagrant"
+  config.vm.synced_folder "./", "/vagrant"
   config.vm.provision :shell, :path => "bootstrap.sh"
 end
