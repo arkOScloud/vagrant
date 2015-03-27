@@ -23,7 +23,7 @@ then
 	git pull
 	git fetch --tags
 	npm install
-	bower install
+	bower install --allow-root
 	ember build
 fi
 if [[ -d /var/lib/arkos/applications ]]
