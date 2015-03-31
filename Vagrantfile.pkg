@@ -15,6 +15,7 @@ then
 	git checkout master
 	git pull
 	git fetch --tags
+	pip2 install -r requirements.txt
 fi
 if [[ -d /home/vagrant/genesis ]]
 then
