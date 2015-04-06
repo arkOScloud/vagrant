@@ -5,6 +5,7 @@ $script = <<SCRIPT
 if [[ -d /home/vagrant/core ]]
 then
 	cd /home/vagrant/core
+	git stash
 	git checkout master
 	git pull
 	git fetch --tags
@@ -12,6 +13,7 @@ fi
 if [[ -d /home/vagrant/kraken ]]
 then
 	cd /home/vagrant/kraken
+	git stash
 	git checkout master
 	git pull
 	git fetch --tags
@@ -20,6 +22,7 @@ fi
 if [[ -d /home/vagrant/genesis ]]
 then
 	cd /home/vagrant/genesis
+	git stash
 	git checkout 0.7
 	git pull
 	git fetch --tags
@@ -30,6 +33,7 @@ fi
 if [[ -d /var/lib/arkos/applications ]]
 then
 	cd /var/lib/arkos/applications
+	git stash
 	git checkout master
 	git pull
 	git fetch --tags
@@ -38,5 +42,5 @@ SCRIPT
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, host: 8000, guest: 8000
-  config.vm.provision "shell", inline: $script
+  config.vm.provision "shell", inline: $script, run: "always"
 end
