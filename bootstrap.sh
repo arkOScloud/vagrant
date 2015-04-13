@@ -60,13 +60,15 @@ fi
 
 systemctl start arkos-redis
 mkdir -p /etc/arkos
-echo '{"ldap":"admin"}' > /etc/arkos/secrets.json
+echo '{"ldap":"admin","mysql":"testpass"}' > /etc/arkos/secrets.json
 echo '{}' > /etc/arkos/policies.json
 
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 systemctl start mysqld
 mysqladmin -u root password 'testpass'
 mysqladmin -u root -h localhost -ptestpass password 'testpass'
+
+localectl set-locale "LANG=en_GB.UTF-8"
 
 echo "[client]" >> /root/.my.cnf
 echo "user=root" >> /root/.my.cnf
