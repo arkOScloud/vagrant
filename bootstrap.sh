@@ -37,7 +37,6 @@ if [ ! -d /home/vagrant/genesis ]
 then
 	git clone https://git.coderouge.co/arkOS/genesis.git genesis
 	cd /home/vagrant/genesis
-	git checkout 0.7
 	npm install --save-dev ember-cli@0.2.0
 fi
 if [ ! -d /var/lib/arkos/applications ]

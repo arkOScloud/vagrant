@@ -21,7 +21,7 @@ if [[ -d /home/vagrant/genesis ]]
 then
 	cd /home/vagrant/genesis
 	git stash
-	git checkout 0.7
+	git checkout master
 	git pull
 	git fetch --tags
 	npm install
