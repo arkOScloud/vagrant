@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Add a hostname
+echo "arkos-vagrant" > /etc/hostname
+
 # Trust arkOS signing key
 mkdir /root/.gnupg
 pacman-key -r 0585F850
@@ -14,10 +17,10 @@ pacman --noconfirm -U /tmp/arkos-mirrorlist.pkg.tar.xz
 curl "https://www.archlinux.org/mirrorlist/?country=CA&protocol=http&ip_version=4" 2>/dev/null > /etc/pacman.d/mirrorlist && sed -i 's/\#Server/Server/g' /etc/pacman.d/mirrorlist
 
 # Update the system
-#pacman --noconfirm -Syu
+pacman --noconfirm -Syu
 
 # Install system dependencies
-pacman --noconfirm -Sy pkg-config gcc iptables python2 python2-pip redis arkos-redis openldap arkos-openldap python2-nginx python2-pacman python2-ntplib python2-passlib python2-pyopenssl python2-iptables python2-dbus python2-cryptsetup python2-pyparted python2-ldap python2-psutil python2-netifaces python2-gitpython python2-gnupg python2-flask python2-redis python2-pillow mysql-python nginx git postfix dovecot mariadb nodejs supervisor php php-fpm php-xcache php-tidy php-gd php-intl php-ldap ruby uwsgi uwsgi-plugin-python2 php-sqlite python2-pgpdump python2-lxml python2-itsdangerous spambayes
+pacman --noconfirm -Sy pkg-config gcc iptables python2 python2-pip redis arkos-redis openldap arkos-openldap python2-nginx python2-pacman python2-ntplib python2-passlib python2-pyopenssl python2-iptables python2-dbus python2-cryptsetup python2-pyparted python2-ldap python2-psutil python2-netifaces python2-gitpython python2-gnupg python2-flask python2-redis python2-pillow mysql-python nginx git postfix dovecot mariadb nodejs supervisor php php-fpm php-xcache php-tidy php-gd php-intl php-ldap ruby uwsgi uwsgi-plugin-python2 php-sqlite python2-pgpdump python2-lxml python2-itsdangerous spambayes fail2ban
 
 # Prepare arkOS working environment
 mkdir -p /var/lib/arkos
