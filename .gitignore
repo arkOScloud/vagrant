@@ -1,2 +1,2 @@
 .vagrant/
-package.box
+*.box
