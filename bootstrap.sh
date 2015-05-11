@@ -12,7 +12,7 @@ pacman-key --lsign 0585F850
 pacman --noconfirm -Sy wget
 
 # Install arkOS package repo details
-wget -O /tmp/arkos-mirrorlist.pkg.tar.xz https://nyus.mirror.arkos.io/x86_64/arkos/arkos-mirrorlist-20150101-1-any.pkg.tar.xz
+wget -O /tmp/arkos-mirrorlist.pkg.tar.xz https://nyus.mirror.arkos.io/x86_64/arkos/arkos-mirrorlist-20150413-1-any.pkg.tar.xz
 pacman --noconfirm -U /tmp/arkos-mirrorlist.pkg.tar.xz
 curl "https://www.archlinux.org/mirrorlist/?country=CA&protocol=http&ip_version=4" 2>/dev/null > /etc/pacman.d/mirrorlist && sed -i 's/\#Server/Server/g' /etc/pacman.d/mirrorlist
 
