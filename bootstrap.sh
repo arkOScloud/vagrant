@@ -2,7 +2,7 @@
 
 # Set initial options
 echo "arkos" > /etc/hostname
-localectl set-locale "LANG=en_GB.UTF-8"
+localectl set-locale "LANG=en_US.UTF-8"
 
 # Get prerequisites
 pacman --noconfirm -Sy wget git
@@ -19,7 +19,7 @@ curl "https://www.archlinux.org/mirrorlist/?country=CA&protocol=http&ip_version=
 pacman --noconfirm -Syu
 
 # Install system dependencies
-pacman --noconfirm -Sy python2 python2-pip redis openldap fail2ban
+pacman --noconfirm -Sy python2 python2-pip redis openldap fail2ban nodejs npm
 
 # Install arkOS packages
 pacman --noconfirm -S arkos-redis arkos-openldap arkos-core arkos-kraken arkos-genesis
