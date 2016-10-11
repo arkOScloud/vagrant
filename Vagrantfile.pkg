@@ -7,6 +7,7 @@ then
 	git checkout master
 	git pull
 	git fetch --tags
+	pip install -r requirements.txt
 fi
 if [[ -d /home/vagrant/kraken ]]
 then
@@ -15,7 +16,7 @@ then
 	git checkout master
 	git pull
 	git fetch --tags
-	pip2 install -r requirements.txt
+	pip install -r requirements.txt
 fi
 if [[ -d /home/vagrant/genesis ]]
 then
