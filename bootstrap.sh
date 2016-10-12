@@ -19,17 +19,9 @@ curl "https://www.archlinux.org/mirrorlist/?country=CA&protocol=http&ip_version=
 pacman --noconfirm -Syu
 
 # Install system dependencies
-pacman --noconfirm -Sy python2 python2-pip redis openldap fail2ban nodejs npm
+pacman --noconfirm --needed -Sy pkg-config binutils gcc iptables python python2 python-pip python2-pip
 
 # Install arkOS packages
-pacman --noconfirm -S arkos-redis arkos-openldap arkos-core arkos-kraken arkos-genesis
+pacman --noconfirm -S arkos-configs arkos-core arkos-kraken arkos-genesis
 
-# Make sure nginx uses the `sites-available` hierarchy
-if [ ! -d /etc/nginx/sites-available ]
-then
-	mkdir -p /etc/nginx/sites-{available,enabled}
-	mkdir -p /srv/http/webapps
-	cp /vagrant/nginx.conf /etc/nginx/nginx.conf
-fi
-
-rm -r /var/cache/pacman/pkg/*
+pacman --noconfirm -Scc
